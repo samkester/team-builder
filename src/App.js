@@ -17,7 +17,7 @@ const defaultMembers = [
     id: uuid(),
     name: "React",
     role: "indispensable library",
-    email: null,
+    email: "",
   },
 ];
 
@@ -109,7 +109,7 @@ function App() {
         <h1>Team Roster</h1>
       </header>
       {members.map(item =>
-        <Member key={item.id} member={item} edit={editMember}/>
+        <Member key={item.id} member={item} edit={editMember} isActive={inputValues.editExistingID === item.id}/>
       )}
       <Form values={inputValues} setValue = {setSingleInputValue} submitForm = {submitForm} cancelForm = {stopEditMember} />
     </StyledApp>

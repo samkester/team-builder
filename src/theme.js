@@ -3,8 +3,8 @@ const theme = {
     mainTextColor: "silver",
     headingBackgroundColor: "darkred" ,
     headingTextColor: "mistyrose",
-    highlightBackgroundColor: "brown",
-    highlightTextColor: "firebrick",
+    highlightBackgroundColor: "firebrick",
+    highlightTextColor: "salmon",
 }
 
 export default theme;
