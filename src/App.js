@@ -4,6 +4,7 @@ import React, {useState} from 'react';
 import {v4 as uuid} from "uuid";
 import Member from "./Member";
 import Form from "./Form";
+import styled from "styled-components";
 
 const defaultMembers = [
   {
@@ -26,6 +27,31 @@ const defaultInputValues = {
   email: "",
   editExistingID: 0,
 }
+
+const StyledApp = styled.div`
+  background-color: ${props => props.theme.backgroundColor};
+  color: ${props => props.theme.mainTextColor};
+
+  width: 100%;
+  min-height: 100vh;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+
+  h1{
+    color: ${props => props.theme.headingTextColor};
+    background-color: ${props => props.theme.highlightBackgroundColor};
+
+    font-size: 3.2rem;
+
+    padding: 0 2rem 0.5rem;
+    border-radius: 0 0 1rem 1rem;
+    
+    margin-bottom: 4rem;
+  }
+`;
 
 function App() {
   const [members, setMembers] = useState(defaultMembers);
@@ -78,15 +104,15 @@ function App() {
   }
 
   return (
-    <div className="App">
-      <header className="App-header">
+    <StyledApp>
+      <header>
         <h1>Team Roster</h1>
       </header>
       {members.map(item =>
         <Member key={item.id} member={item} edit={editMember}/>
       )}
       <Form values={inputValues} setValue = {setSingleInputValue} submitForm = {submitForm} cancelForm = {stopEditMember} />
-    </div>
+    </StyledApp>
   );
 }
 
