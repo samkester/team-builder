@@ -3,6 +3,7 @@ import logo from './logo.svg';
 //import './App.css';
 import {v4 as uuid} from "uuid";
 import Member from "./Member";
+import Form from "./Form";
 
 const defaultMembers = [
   {
@@ -19,8 +20,19 @@ const defaultMembers = [
   },
 ];
 
+const defaultInputValues = {
+  name: "",
+  role: "",
+  email: "",
+}
+
 function App() {
   const [members, setMembers] = useState(defaultMembers);
+  const [inputValues, setInputValues] = useState(defaultInputValues);
+
+  const setSingleInputValue = (name, value) => {
+    setInputValues({...inputValues, [name]: value});
+  }
 
   return (
     <div className="App">
@@ -30,7 +42,7 @@ function App() {
       {members.map(item =>
         <Member key={item.id} member={item} />
       )}
-      {/* render list of team members here */}
+      <Form values={inputValues} setValue = {setSingleInputValue} />
     </div>
   );
 }
