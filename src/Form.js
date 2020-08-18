@@ -1,11 +1,16 @@
 import React from "react";
 
 const Form = (props) => {
-    const {values, setValue, submitForm} = props;
+    const {values, setValue, submitForm, cancelForm} = props;
 
     const setValueListener = event => {
         setValue(event.target.name, event.target.value);
     };
+
+    const doCancel = event => {
+        event.preventDefault();
+        cancelForm();
+    }
 
     const canSubmitNow = () => {
         return values.name.trim() && values.email.trim() && values.role;
@@ -13,7 +18,7 @@ const Form = (props) => {
 
     return(
         <form onSubmit={submitForm}>
-            <h3>Add new team member</h3>
+            <h3>{values.editExistingID ? "Edit team member" : "Add new team member"}</h3>
             <input name="name" type="text" placeholder="username" value={values.name} onChange={setValueListener} />
             <input name="email" type="email" placeholder="email" value={values.email} onChange={setValueListener} />
             <select name="role" value={values.role} onChange={setValueListener}>
@@ -24,7 +29,8 @@ const Form = (props) => {
                 <option>QA Engineer</option>
                 <option>Ninja</option>
             </select>
-            <button disabled={!canSubmitNow()}>Do the Thing</button>
+            <button disabled={!canSubmitNow()}>{values.editExistingID ? "Edit Member" : "Add Member"}</button>
+            {values.editExistingID !== 0 && <button onClick={doCancel}>Cancel Edit</button>}
         </form>
     );
 }
