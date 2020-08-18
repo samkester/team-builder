@@ -17,7 +17,7 @@ const defaultMembers = [
     id: uuid(),
     name: "React",
     role: "indispensable library",
-    email: "",
+    email: "react.com",
   },
 ];
 

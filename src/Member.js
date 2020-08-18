@@ -3,10 +3,10 @@ import styled from "styled-components";
 
 const StyledMember = styled.div`
     margin: 1rem;
-    padding: 1rem;
+    padding: 1rem 1rem 1rem 2rem;
     width: 80%;
 
-    border: 1px solid currentColor;
+    border: 2px solid currentColor;
     border-radius: 2rem;
 
     display: flex;
@@ -18,7 +18,7 @@ const StyledMember = styled.div`
         color: ${props => props.theme.headingTextColor};
         background-color: ${props => props.theme.headingBackgroundColor};
         padding: 1rem;
-        border: 1px solid currentColor;
+        border: 2px solid currentColor;
         border-radius: 1rem;
     }
 
