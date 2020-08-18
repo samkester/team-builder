@@ -34,6 +34,21 @@ function App() {
     setInputValues({...inputValues, [name]: value});
   }
 
+  const addMember = () => {
+    const name = inputValues.name.trim();
+    const email = inputValues.email.trim();
+    const role = inputValues.role;
+    if(name && email && role){
+      setMembers([...members, {name, email, role}]);
+      setInputValues(defaultInputValues);
+    }
+  }
+
+  const submitForm = (event) => {
+    event.preventDefault();
+    addMember();
+  }
+
   return (
     <div className="App">
       <header className="App-header">
@@ -42,7 +57,7 @@ function App() {
       {members.map(item =>
         <Member key={item.id} member={item} />
       )}
-      <Form values={inputValues} setValue = {setSingleInputValue} />
+      <Form values={inputValues} setValue = {setSingleInputValue} submitForm = {submitForm} />
     </div>
   );
 }
